@@ -1,0 +1,522 @@
+/* ==========================================================================
+   SMARTINVEST MASTER CONSOLE - ULTRA HIGH VELOCITY ELECTRIC ICE THEME v1.0
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+:root {
+    --bg-color: #01050e;
+    --panel-bg: rgba(2, 9, 25, 0.85);
+    --border-color: rgba(0, 230, 255, 0.22);
+    --text-main: #eaf5ff;
+    --text-muted: #64748b;
+    --neon-blue: #00e6ff;
+    --neon-green: #00ff88;
+    --neon-red: #ff4444;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #01040a, #04142d, #092c57, #031835, #01040a);
+    background-size: 400% 400%;
+    animation: polarSpeedFlow 12s ease infinite;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@keyframes polarSpeedFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================================
+   3D CYBERNETIC FLOOR GRID & FLUID AURORA
+   ========================================================================== */
+
+/* The Moving Grid Floor */
+body::before {
+    content: "";
+    position: fixed;
+    bottom: -50%; left: -50%; width: 200%; height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 230, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    pointer-events: none;
+    transform-origin: top center;
+    transform: perspective(1000px) rotateX(75deg);
+    animation: gridScanner 8s linear infinite;
+    mask-image: linear-gradient(to bottom, transparent 5%, black 80%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 80%);
+}
+
+@keyframes gridScanner {
+    0% { transform: perspective(1000px) rotateX(75deg) translateY(0); }
+    100% { transform: perspective(1000px) rotateX(75deg) translateY(60px); }
+}
+
+/* The Massive Rotating Aurora Glow */
+.ice-ambient-glow {
+    position: fixed;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(0, 230, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(0, 255, 136, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 40% 80%, rgba(0, 100, 255, 0.07) 0%, transparent 50%);
+    z-index: 0;
+    pointer-events: none;
+    animation: auroraSwirl 25s infinite linear;
+}
+
+@keyframes auroraSwirl {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ==========================================================================
+   ERROR MESSAGE CONTAINER
+   ========================================================================== */
+#error-message {
+    display: none;
+    background: rgba(255, 68, 68, 0.15);
+    border: 1px solid var(--neon-red);
+    color: var(--neon-red);
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.2);
+}
+
+/* ==========================================================================
+   UI VISIBILITY STATES (HIDES EVERYTHING UNTIL SEARCH IS EXECUTED)
+   ========================================================================== */
+
+body:not(.system-active) #predictionResults,
+body:not(.system-active) .cyber-corner-widget,
+body:not(.system-active) #trendingMarket,
+body:not(.system-active) .project-info,
+body:not(.system-active) .helpful-links,
+body:not(.system-active) .footer-container {
+    display: none !important;
+}
+
+body.system-active #predictionResults,
+body.system-active .cyber-corner-widget,
+body.system-active #trendingMarket,
+body.system-active .project-info,
+body.system-active .helpful-links,
+body.system-active .footer-container {
+    animation: slideUpReveal 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes slideUpReveal {
+    0% { opacity: 0; transform: translateY(30px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================================
+   SKELETON LOADING ANIMATION
+   ========================================================================== */
+.skeleton-loading {
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: transparent !important;
+    color: transparent !important;
+}
+
+.skeleton-loading > * { visibility: hidden; }
+
+.skeleton-loading::after {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 1.5s infinite;
+    content: '';
+}
+
+@keyframes shimmer {
+    100% { transform: translateX(100%); }
+}
+
+/* ==========================================================================
+   CENTER PLATFORM HUB
+   ========================================================================== */
+.container {
+    background: var(--panel-bg);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 550px;
+    padding: 40px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.85);
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.container:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 45px 95px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 230, 255, 0.2);
+}
+
+.animated-header { text-align: center; width: 100%; }
+
+.animated-header h1 {
+    font-size: 2.75rem;
+    font-weight: 900;
+    margin: 0 0 4px 0;
+    color: #ffffff;
+    letter-spacing: -1.5px;
+    text-shadow: 0 0 25px rgba(0,230,255,0.15);
+}
+
+.subtitle-tag {
+    margin: 0 0 32px 0;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--neon-blue);
+    font-weight: 800;
+}
+
+.search-wrapper { display: flex; flex-direction: column; gap: 14px; }
+
+input[type="text"] {
+    width: 100%;
+    background-color: rgba(1, 3, 9, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 25px rgba(0, 230, 255, 0.35);
+}
+
+button {
+    width: 100%;
+    background: #ffffff;
+    color: #01050e;
+    border: none;
+    padding: 16px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: var(--neon-blue);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 230, 255, 0.45);
+}
+
+/* ==========================================================================
+   METRICS PANELS & MASSIVE CENTERED CARDS
+   ========================================================================== */
+#predictionResults {
+    margin-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding-top: 24px;
+}
+
+#predictionResults h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin: 0 0 24px 0;
+    font-weight: 800;
+}
+
+.results-grid { display: grid; grid-template-columns: 1fr; gap: 14px; width: 100%; }
+
+.metric-card {
+    background: rgba(1, 4, 11, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
+}
+
+.metric-card:hover {
+    transform: translateX(4px);
+    border-color: var(--neon-blue);
+}
+
+/* BIG CENTERED TARGET & SPOT CARDS */
+.metric-card.primary-target, 
+.metric-card.price-tracking-card {
+    background: linear-gradient(135deg, rgba(0, 230, 255, 0.08), transparent);
+    border: 1px solid rgba(0, 230, 255, 0.3);
+    text-align: center;
+    padding: 26px;
+}
+
+.card-value {
+    font-size: 3.35rem;
+    font-weight: 900;
+    font-family: 'JetBrains Mono', monospace;
+    color: #ffffff;
+    letter-spacing: -1.5px;
+    margin: 6px 0;
+    text-shadow: 0 0 25px rgba(0, 230, 255, 0.35);
+}
+
+.card-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 800; }
+.card-subtext { font-size: 0.92rem; color: var(--text-muted); font-weight: 600; }
+
+.indicators-panel { display: flex; flex-direction: column; gap: 12px; }
+.indicator-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; color: var(--text-muted); }
+
+.badge {
+    background: rgba(1, 3, 9, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #ffffff;
+}
+
+.sentiment-badge {
+    color: var(--neon-blue) !important;
+    border-color: rgba(0, 230, 255, 0.25) !important;
+    text-shadow: 0 0 8px rgba(0, 230, 255, 0.2);
+}
+
+/* ==========================================================================
+   INTERACTIVE HUD SIDEBARS
+   ========================================================================== */
+.project-info, .helpful-links {
+    width: 100%;
+    max-width: 550px;
+    background: rgba(2, 13, 34, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 230, 255, 0.16);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    z-index: 1;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-info:hover, .helpful-links:hover, .cyber-corner-widget:hover {
+    transform: translateY(-4px) scale(1.015);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 230, 255, 0.3);
+}
+
+.project-info h3, .helpful-links h3 {
+    margin: 0 0 14px 0;
+    font-size: 0.85rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    border-left: 3px solid var(--neon-blue);
+    padding-left: 10px;
+}
+
+.project-info p { margin: 0; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; }
+.project-info strong { color: var(--neon-blue); }
+
+.resources-grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+
+.resource-btn-link {
+    display: block;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 230, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.resource-btn-link:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #01050e;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+}
+
+.terminal-sub-label {
+    margin: 16px 0 10px 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+#headlines-container { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+
+.system-status-indicator {
+    display: flex; align-items: center; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.status-text { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); }
+
+.status-pulse, .terminal-pulse { width: 6px; height: 6px; border-radius: 50%; }
+.status-pulse { background-color: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); animation: fastPulse 1.2s infinite; }
+.terminal-pulse { background-color: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); margin-right: 8px; display: inline-block; animation: fastPulse 1s infinite; }
+
+@keyframes fastPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.25); }
+}
+
+/* ==========================================================================
+   CORNER WIDGETS
+   ========================================================================== */
+.cyber-corner-widget {
+    display: none;
+    width: 250px;
+    background: rgba(2, 11, 29, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 230, 255, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.widget-title { font-size: 0.68rem; font-weight: 800; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 10px; }
+.metric-stat-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); padding: 3px 0; }
+
+.volatility-bar-wrapper { width: 100%; height: 5px; background: rgba(255,255,255,0.03); border-radius: 3px; overflow: hidden; margin-top: 8px; }
+.volatility-bar-fill {
+    height: 100%; 
+    background: var(--neon-blue); 
+    box-shadow: 0 0 10px var(--neon-blue);
+    width: 0%;
+    transition: width 2.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    animation: slowGlowPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes slowGlowPulse { 
+    0% { opacity: 0.75; box-shadow: 0 0 5px var(--neon-blue); } 
+    100% { opacity: 1; box-shadow: 0 0 18px var(--neon-blue); } 
+}
+
+/* ==========================================================================
+   FOOTER GLOBAL TICKER
+   ========================================================================== */
+#trendingMarket {
+    width: 100%;
+    max-width: 550px;
+    background: rgba(2, 9, 24, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 230, 255, 0.18);
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 14px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+#trendingMarket h2 { margin: 0 0 12px 0; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 800; }
+
+.ticker-box-wrapper { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+
+#trendingMarketList { margin: 0; padding: 0; list-style: none; width: 100%; }
+
+.trending-item, .news-headline-item {
+    display: flex; align-items: center; width: 100%; animation: entrySlideText 0.4s ease-out;
+}
+
+.trending-item { justify-content: space-between; font-size: 0.95rem; font-weight: 700; }
+.news-headline-item { justify-content: space-between; gap: 12px; text-align: left; }
+
+@keyframes entrySlideText {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* CHART CONTAINER FOR CHART.JS */
+#chart-container-wrapper {
+    width: 100%; height: 250px; position: relative; margin-top: 20px;
+}
+
+/* ==========================================================================
+   PROFESSIONAL FOOTER
+   ========================================================================== */
+.footer-container {
+    margin-top: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.8;
+    z-index: 2;
+    position: relative;
+}
+
+.footer-container span { color: var(--neon-blue); font-weight: 800; }
+
+/* ==========================================================================
+   WIDESCREEN & RESPONSIVE DESKTOP LAYOUT
+   ========================================================================== */
+@media (min-width: 1250px) {
+    body { padding: 40px 60px; justify-content: center; }
+    .project-info { position: fixed; top: 40px; left: 40px; max-width: 320px; }
+    .helpful-links { position: fixed; top: 40px; right: 40px; max-width: 320px; }
+    .cyber-corner-widget { display: block; position: fixed; }
+    .bottom-left-widget { bottom: 40px; left: 40px; }
+    .bottom-right-widget { bottom: 40px; right: 40px; }
+}

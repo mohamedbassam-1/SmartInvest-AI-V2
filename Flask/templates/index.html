@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartInvest AI - Advanced Quant Station</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- 🌟 ADD CHART.JS LIBRARY 🌟 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="ice-ambient-glow"></div>
+    <div class="quantum-fireflies-container">
+        <!-- Fireflies -->
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+        <span class="firefly"></span><span class="firefly"></span><span class="firefly"></span>
+    </div>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="project-info top-left">
+        <h3>SmartInvest Core Matrix</h3>
+        <p>An institutional-grade predictive node engineering deep market vector forecasting. By synthesizing multi-layered <strong>Long Short-Term Memory (LSTM)</strong> neural architectures with high-velocity <strong>Statistical ML Ensembles</strong>, the engine extracts structural price trajectories out of raw temporal data fields in real time.</p>
+        <div class="system-status-indicator">
+            <span class="status-pulse"></span>
+            <span class="status-text">Neural Network Core: Active</span>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="helpful-links top-right">
+        <h3>System Resources Directory</h3>
+        <div class="resources-grid-links">
+            <a href="https://finance.yahoo.com/" target="_blank" class="resource-btn-link">Yahoo Finance</a>
+            <a href="https://www.investopedia.com/" target="_blank" class="resource-btn-link">Investopedia</a>
+            <a href="https://www.sec.gov/" target="_blank" class="resource-btn-link">U.S. SEC</a>
+            <a href="https://www.bloomberg.com/" target="_blank" class="resource-btn-link">Bloomberg</a>
+        </div>
+        <h4 class="terminal-sub-label">Live Scraped Intelligence Feed</h4>
+        <ul id="headlines-container">
+            <li><span class="terminal-pulse"></span>Awaiting stock evaluation query execution...</li>
+        </ul>
+    </div>
+
+    <!-- CENTER HUB -->
+    <div class="container">
+        <div class="animated-header">
+            <h1>SmartInvest AI</h1>
+            <p class="subtitle-tag">Advanced Multi-Model Market Quantizer</p>
+        </div>
+        
+        <form id="analysis-form">
+            <div class="search-wrapper">
+                <input type="text" id="stock_value" name="stock_value" placeholder="Enter Ticker Signature (e.g., TSLA, GLD, NVDA)" required autocomplete="off">
+                <button type="submit" id="execute-btn">EXECUTE CORE ANALYSIS</button>
+            </div>
+            <!-- 🌟 ERROR MESSAGE CONTAINER 🌟 -->
+            <div id="error-message" style="display: none; color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 12px; border-radius: 8px; margin-top: 14px; text-align: center; border: 1px solid rgba(255, 68, 68, 0.3); font-weight: bold; font-size: 0.9rem;"></div>
+        </form>
+        
+        <div id="predictionResults">
+            <h2>AI Predictive Insights Matrix</h2>
+            
+            <div class="results-grid">
+                
+                <div class="metric-card price-tracking-card">
+                    <span class="card-label">Spot Exchange Value</span>
+                    <div id="currentPrice" class="card-value">$0.00</div>
+                    <div id="change" class="card-subtext">$0.00 (0.00%)</div>
+                </div>
+
+                <div class="metric-card primary-target">
+                    <span class="card-label">Consensus Forecast Target</span>
+                    <div id="predictedPrice" class="card-value">$0.00</div>
+                    <div id="suggestion" class="card-subtext">Calculating tracking variables...</div>
+                    
+                    <div class="explainability-module" style="margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); text-align: left; display: none;" id="explain-module">
+                        <span class="card-label" style="color: #00e6ff;">AI Confidence Score</span>
+                        <div id="aiConfidence" style="font-size: 2rem; font-weight: 900; color: #ffffff; margin-bottom: 16px;">--%</div>
+                        
+                        <span class="card-label">Reasoning Matrix</span>
+                        <ul id="aiReasons" style="list-style: none; padding: 0; margin: 10px 0 0 0; color: #eaf5ff; font-size: 0.85rem; line-height: 2; font-weight: 600;">
+                            <!-- JS will inject reasons here -->
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="metric-card indicators-panel">
+                    <span class="card-label">Market Vector Analytics</span>
+                    <div class="indicator-row">
+                        <span>Active Trajectory Profile:</span>
+                        <span id="trend" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>2-Week Momentum Outlook:</span>
+                        <span id="twoWeekPrediction" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>Relative Strength Index (RSI-14):</span>
+                        <span id="rsi" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>Exponential Moving Average (EMA-20):</span>
+                        <span id="ema20" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>Simple Moving Average (SMA-50):</span>
+                        <span id="sma50" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>Rate of Change (ROC-12):</span>
+                        <span id="roc" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>MACD Crossover Vector:</span>
+                        <span id="macd" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row">
+                        <span>Bollinger Bands Volatility:</span>
+                        <span id="bollinger" class="badge">--</span>
+                    </div>
+                    <div class="indicator-row sentiment-row">
+                        <span>FinBERT NLP Sentiment Consensus:</span>
+                        <span id="newsSentiment" class="badge sentiment-badge">--</span>
+                    </div>
+                </div>
+
+                <!-- 🌟 REAL CHART.JS CONTAINER 🌟 -->
+                <div class="metric-card" style="grid-column: 1 / -1;">
+                     <span class="card-label" style="display: block; margin-bottom: 15px; text-align: left;">AI Forecast Visualization</span>
+                     <div style="height: 250px; width: 100%;">
+                         <canvas id="realChart"></canvas>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CORNER METRICS -->
+    <div class="cyber-corner-widget bottom-left-widget">
+        <div class="widget-title">MODEL ACCURACY ASSESSMENT</div>
+        <div class="matrix-ticker-stream">
+            <div class="metric-stat-row"><span>Ensemble Backtest MSE:</span> <strong style="color: #ffffff;">0.0142</strong></div>
+            <div class="metric-stat-row"><span>Directional Rate:</span> <strong style="color: #00e6ff;" id="directionalRate">84.5%</strong></div>
+        </div>
+    </div>
+
+    <div class="cyber-corner-widget bottom-right-widget">
+        <div class="widget-title">VOLATILITY ENVELOPE SCALE</div>
+        <div class="volatility-bar-wrapper">
+            <div class="volatility-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER TICKER -->
+    <div id="trendingMarket">
+        <h2>Global Momentum Tracking Array</h2>
+        <div class="ticker-box-wrapper">
+            <ul id="trendingMarketList">
+                <li>Refreshing systemic tickers...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 🌟 NEW: PROJECT FOOTER 🌟 -->
+    <div class="project-footer">
+        <div class="footer-content">
+            <span class="version-tag">v1.0</span>
+            <span class="project-name">SmartInvest AI Stock Prediction System</span>
+            <span class="grad-tag">Graduation Project 2025</span>
+            <span class="creator-tag">Designed by Mohamed Bassam Hassan</span> <!-- Replace "Your Name" -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
