@@ -1,122 +1,148 @@
-📈 SmartInvest AI
+🚀 SmartInvest AI V2
 
-Institutional-Grade Predictive Market Quantizer
+An AI-powered stock market prediction platform that combines Long Short-Term Memory (LSTM) neural networks with technical analysis indicators to generate intelligent stock price forecasts and explainable market insights.
 
-Developed by Mohamed Bassam Hassan | Graduation Capstone Project 2025
+📌 Overview
 
-📖 Table of Contents
+SmartInvest AI V2 is an end-to-end Artificial Intelligence web application developed as a Final Year Graduation Project.
 
-Executive Summary
+The system collects real-time market data, analyzes historical stock prices, calculates multiple technical indicators, and generates AI-powered forecasts using a trained Long Short-Term Memory (LSTM) neural network.
 
-The Problem & Our Solution
+Unlike traditional stock dashboards, SmartInvest AI focuses on explainable predictions by combining Machine Learning with technical analysis to help users better understand why a prediction was made.
 
-System Interface
-
-Core Architecture
-
-Key Features
-
-Tech Stack
-
-Installation & Quick Start
-
-Future Roadmap
-
-🚀 Executive Summary
-
-SmartInvest AI is an advanced, high-velocity predictive financial dashboard. By synthesizing multi-layered Long Short-Term Memory (LSTM) neural architectures with traditional Statistical Machine Learning Ensembles, the engine extracts structural price trajectories out of raw temporal data fields in real time.
-
-💡 The Problem & Our Solution
-
-Traditional financial forecasting tools are often opaque, overly complex, or locked behind expensive institutional paywalls.
-
-SmartInvest AI bridges the gap between complex machine learning and actionable market insights. It packages deep quantitative analysis into a clean, highly visual, and responsive UI that delivers immediate clarity without sacrificing mathematical rigor.
-
-🖥️ System Interface
-
-(Replace these placeholders with actual screenshots of your beautiful UI once uploaded to GitHub)
-
-🧠 Core Architecture
-
-The application runs on a robust, multi-stage data pipeline:
-
-Data Ingestion: Resilient historical data scraping via yfinance, with automated fallbacks to hidden JSON API streams to bypass rate limits.
-
-Feature Engineering: Real-time calculation of momentum and volatility indicators using the ta library (RSI, MACD, Bollinger Bands, ROC, EMA, SMA).
-
-Inference Engine: Historical sequences are normalized and fed into an optimized TensorFlow/Keras LSTM model to predict the consensus target.
-
-Explainable AI (XAI): The system calculates a dynamic Confidence Score based on the alignment or conflict of the underlying technical indicators.
-
-Visualization: Data is rendered via a custom HTML5 Neon Canvas to visualize the AI Forecast Trajectory.
-
-✨ Key Features
-
-🎯 LSTM Neural Core: Real-time deep learning inference for trend forecasting.
-
-📊 Ensemble Analytics: Instantaneous technical momentum analysis.
-
-📰 NLP Sentiment Analysis: FinBERT-inspired market news consensus analysis indicating overall market sentiment.
-
-🛡️ Resilient Infrastructure: Bulletproof error handling and API fallback pipelines.
-
-🧠 Explainable Reasoning: A transparent "Reasoning Matrix" that breaks down exactly why the AI made its prediction in plain English.
-
-📱 Fully Responsive UI: A premium "Neon-Ice" theme optimized for desktop, tablet, and mobile environments.
-
-🛠️ Tech Stack
-
+✨ Features
+📈 Real-time stock market data
+🤖 LSTM Deep Learning prediction engine
+📊 Historical price visualization
+📉 AI trajectory prediction chart
+📌 Technical indicators
+RSI
+EMA
+SMA
+ROC
+MACD
+Bollinger Bands
+🎯 AI Confidence Score
+🧠 Explainable AI reasoning engine
+📡 Live financial data integration
+📱 Responsive modern UI
+⚡ Fast Flask backend
+🛠 Tech Stack
 Backend
-
-Python 3.x: Core application logic.
-
-Flask: RESTful API routing and web server.
-
-TensorFlow / Keras: Deep learning model architecture.
-
-Pandas & NumPy: High-speed data matrix manipulation.
-
+Python
+Flask
+TensorFlow / Keras
+NumPy
+Pandas
+yfinance
+TA-Lib / ta
 Frontend
+HTML5
+CSS3
+JavaScript
+Chart.js
+Machine Learning
+Long Short-Term Memory (LSTM)
+MinMaxScaler
+Time Series Forecasting
+🏗 Project Architecture
+User
+   │
+   ▼
+Frontend (HTML/CSS/JavaScript)
+   │
+   ▼
+Flask API
+   │
+   ▼
+Market Data (Yahoo Finance)
+   │
+   ▼
+Feature Engineering
+(RSI • EMA • SMA • MACD • ROC)
+   │
+   ▼
+LSTM Neural Network
+   │
+   ▼
+Prediction Engine
+   │
+   ▼
+Dashboard Visualization
+📊 Dashboard
 
-HTML5 / Vanilla JS: High-performance DOM manipulation and asynchronous data fetching.
+(Add screenshots here)
 
-CSS3: Custom 3D cybernetic grids, fluid aurora backgrounds, and responsive flexbox/grid scaling.
+Landing Page
+Prediction Dashboard
+AI Confidence
+Technical Indicators
+Forecast Chart
+⚙ Installation
+git clone https://github.com/mohamedbassam-1/SmartInvest-AI-V2.git
 
-HTML5 Canvas: Fluid, custom-drawn trajectory rendering.
+cd SmartInvest-AI-V2
 
-⚙️ Installation & Quick Start
-
-Clone the repository:
-
-git clone [https://github.com/mohamedbassam-1/SmartInvest-AI.git](https://github.com/mohamedbassam-1/SmartInvest-AI.git)
-cd SmartInvest-AI
-
-
-Create a virtual environment (Recommended):
-
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-
-Install dependencies:
-
-pip install flask tensorflow yfinance pandas numpy ta requests
-
-
-Run the Core Engine:
+pip install -r requirements.txt
 
 python app.py
 
+Visit
 
-Access the Dashboard:
-Open your browser and navigate to http://127.0.0.1:5000
+http://127.0.0.1:5000
+📈 Prediction Workflow
+User enters a stock ticker.
+Historical market data is downloaded.
+Technical indicators are calculated.
+Data is normalized.
+LSTM predicts future prices.
+AI generates confidence score.
+Dashboard displays predictions and reasoning.
+🎯 Example Prediction
+Metric	Value
+Current Price	$706.52
+Predicted Price	$624.80
+Confidence	87%
+Trend	Bearish
+RSI	50.08
+EMA20	720.53
+📂 Project Structure
+SmartInvest-AI-V2/
 
-🗺️ Future Roadmap (v2.0)
+│── app.py
+│── requirements.txt
+│── lstm_model.keras
+│── scaler.pkl
+│── static/
+│     ├── css/
+│     ├── js/
+│     └── images/
+│
+│── templates/
+│     └── index.html
+│
+└── README.md
+🚀 Future Improvements
+Transformer-based forecasting
+Multi-stock portfolio analysis
+News sentiment analysis
+Economic indicators
+Cryptocurrency forecasting
+Multi-day forecasting
+Model comparison dashboard
+User authentication
+Cloud deployment
+⚠ Disclaimer
 
-[ ] Integration of real-time WebSocket price streams.
+This project was developed for educational and research purposes.
 
-[ ] Expansion to multi-asset classes (Cryptocurrency, Forex).
+The predictions generated by SmartInvest AI should not be considered financial advice or investment recommendations.
 
-[ ] User authentication and personalized portfolio tracking.
+👨‍💻 Author
 
-[ ] Advanced backtesting visualization module.
+Mohamed Bassam
+
+AI Engineer
+
+GitHub:
+https://github.com/mohamedbassam-1
