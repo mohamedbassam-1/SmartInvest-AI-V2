@@ -78,14 +78,14 @@ Dashboard Visualization (Chart.js & Reasoning Matrix)
 
 (Upload your screenshots to your GitHub repository and replace the links below to display them here!)
 
-Landing Page: ![Landing Page]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Landing%20Page.png))
+Landing Page: ![Landing Page][placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Landing%20Page.png)
 
-Prediction Dashboard: ![Dashboard]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%201.png))
+Prediction Dashboard: ![Dashboard]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%201.png)
 
-Explainable AI Matrix: ![AI Reasoning]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%202.png))
+Explainable AI Matrix: ![AI Reasoning]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%202.png)
 
-Examples: ![Chart]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%203.png))
-Examples: ![Chart]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%204.png))
+Examples: ![Chart]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%203.png)
+Examples: ![Chart]([placeholder_link_here](https://github.com/mohamedbassam-1/SmartInvest-AI-V2/blob/main/Photo%204.png)
 
 ⚙️ Installation & Quick Start
 
